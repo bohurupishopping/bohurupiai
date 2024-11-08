@@ -313,22 +313,23 @@ export default function ChatInterface({ generateContent, defaultMessage, session
   }
 
   return (
-    <div className="h-[90dvh] flex flex-col overflow-hidden p-1">
+    <div className="h-[90dvh] flex flex-col overflow-hidden px-3 sm:px-0 py-0 sm:p-1 w-full">
       <StoryCreationPopup
         isOpen={isStoryPopupOpen}
         onClose={() => setIsStoryPopupOpen(false)}
         onSubmit={handleStorySubmit}
       />
       <Card 
-        className="flex-1 mx-1 my-0.5 sm:m-2 
+        className="flex-1 mx-0.5 my-0.5 sm:m-2 
           bg-white/60 backdrop-blur-[10px] 
-          rounded-[2rem] sm:rounded-[2.5rem] 
+          rounded-lg sm:rounded-[2rem] 
           border border-white/20 
           shadow-[0_8px_40px_rgba(0,0,0,0.12)] 
           relative
           flex flex-col
           overflow-hidden
-          h-[calc(98dvh-8px)] sm:h-[calc(98dvh-16px)]"
+          w-full
+          h-[calc(100dvh-20px)] sm:h-[calc(98dvh-16px)]"
         style={{ 
           background: 'linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%)'
         }}
@@ -342,18 +343,18 @@ export default function ChatInterface({ generateContent, defaultMessage, session
 
         <CardHeader 
           className="border-b border-white/20 
-            px-3 sm:px-6 py-2 sm:py-3
+            px-2 sm:px-6 py-1.5 sm:py-3
             flex flex-row justify-between items-center 
             bg-white/40 backdrop-blur-[10px]
             relative z-10
-            h-[50px] sm:h-[60px] flex-shrink-0"
+            h-[40px] sm:h-[60px] flex-shrink-0"
         >
-          <div className="flex items-center space-x-2 sm:space-x-4">
-            <Avatar className="w-8 h-8 sm:w-10 sm:h-10">
+          <div className="flex items-center space-x-2">
+            <Avatar className="w-6 h-6 sm:w-10 sm:h-10">
               <AvatarImage src="/assets/ai-icon.png" alt="AI Avatar" />
             </Avatar>
-            <span className="font-medium text-sm sm:text-base hidden sm:inline">Bohurupi AI : Your Personalized AI Assistant</span>
-            <span className="font-medium text-sm sm:hidden">Bohurupi AI</span>
+            <span className="font-medium text-xs sm:text-base hidden sm:inline">Bohurupi AI : Your Personalized AI Assistant</span>
+            <span className="font-medium text-xs sm:hidden">Bohurupi AI</span>
           </div>
           <div className="flex items-center space-x-1 sm:space-x-2">
             {storyButton}
@@ -421,7 +422,7 @@ export default function ChatInterface({ generateContent, defaultMessage, session
 
         <CardContent 
           className="flex-1 flex flex-col overflow-hidden p-0 
-            h-[calc(95dvh-90px)] sm:h-[calc(94dvh-100px)]"
+            h-[calc(100dvh-60px)] sm:h-[calc(94dvh-100px)]"
         >
           {isSearching && (
             <div className="p-2 sm:p-3 border-b border-white/20 bg-white/40 backdrop-blur-[10px] flex-shrink-0">
@@ -462,8 +463,10 @@ export default function ChatInterface({ generateContent, defaultMessage, session
                     transition={{ duration: 0.3 }}
                     className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
-                    <div className={`flex items-start space-x-2 sm:space-x-3 max-w-[85%] sm:max-w-[80%] ${message.role === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
-                      <Avatar className="w-6 h-6 sm:w-8 sm:h-8 mt-1">
+                    <div className={`flex items-start space-x-1 sm:space-x-3 
+                      max-w-[85%] sm:max-w-[80%] 
+                      ${message.role === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
+                      <Avatar className="w-5 h-5 sm:w-8 sm:h-8 mt-1">
                         <AvatarImage 
                           src={message.role === 'user' ? "/assets/pritam-img.png" : "/assets/ai-icon.png"} 
                           alt={message.role === 'user' ? "User" : "AI"} 
@@ -473,11 +476,11 @@ export default function ChatInterface({ generateContent, defaultMessage, session
                         <motion.div
                           initial={{ scale: 0.95 }}
                           animate={{ scale: 1 }}
-                          className={`px-3 sm:px-4 py-2.5 sm:py-3.5 rounded-2xl ${
-                            message.role === 'user' 
+                          className={`px-2.5 sm:px-4 py-2 sm:py-3.5 rounded-xl sm:rounded-2xl 
+                            ${message.role === 'user' 
                               ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg' 
                               : 'bg-white/50 backdrop-blur-[10px] border border-white/20 text-gray-900'
-                          }`}
+                            }`}
                           style={{
                             WebkitBackdropFilter: 'blur(10px)',
                             backdropFilter: 'blur(10px)',
@@ -562,9 +565,8 @@ export default function ChatInterface({ generateContent, defaultMessage, session
           </div>
 
           <div className="border-t border-white/20 bg-transparent backdrop-blur-[10px] 
-            p-2 sm:p-4 relative z-10 flex-shrink-0"
-          >
-            <form onSubmit={handleSubmit} className="flex items-end space-x-2 sm:space-x-3 max-w-3xl mx-auto relative">
+            px-3 py-2 sm:p-4 relative z-10 flex-shrink-0">
+            <form onSubmit={handleSubmit} className="flex items-end space-x-1.5 sm:space-x-3 max-w-3xl mx-auto relative">
               <div className="flex-1 relative group">
                 <div className="absolute -inset-3 bg-white/40 rounded-[24px] sm:rounded-[28px] blur-lg 
                   opacity-50 group-hover:opacity-70 transition-all duration-500"></div>
@@ -583,19 +585,15 @@ export default function ChatInterface({ generateContent, defaultMessage, session
                   }}
                   onKeyDown={handleKeyDown}
                   placeholder="Type a message..."
-                  className="flex-1 resize-none rounded-[20px] sm:rounded-[24px] border-white/40 
+                  className="flex-1 resize-none rounded-xl sm:rounded-[20px]
+                    border-white/40 
                     bg-white/80 backdrop-blur-[10px] 
                     focus:border-blue-400/50 transition-all duration-300
-                    min-h-[50px] sm:min-h-[60px] 
-                    px-4 sm:px-6 py-3 sm:py-4 
-                    text-sm sm:text-base
-                    shadow-[0_4px_20px_rgba(0,0,0,0.04)] 
-                    focus:shadow-[0_8px_25px_rgba(0,0,0,0.08)]
-                    hover:shadow-[0_6px_22px_rgba(0,0,0,0.06)] 
-                    focus:bg-white/95
-                    overflow-y-auto
-                    relative z-10
-                    !important"
+                    min-h-[40px] sm:min-h-[60px] 
+                    px-4 sm:px-6 py-2.5 sm:py-4 
+                    text-xs sm:text-base
+                    pr-[45px] sm:pr-[60px]
+                    shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
                   style={{
                     maxHeight: '200px',
                     overflowY: 'auto',
@@ -607,17 +605,10 @@ export default function ChatInterface({ generateContent, defaultMessage, session
                 <Button
                   type="submit"
                   disabled={!prompt.trim() || isLoading}
-                  className="absolute right-2 sm:right-3 bottom-[8px] sm:bottom-[10px] 
-                    rounded-[16px] sm:rounded-[20px]
-                    bg-gradient-to-r from-blue-600 to-blue-500 
-                    hover:from-blue-500 hover:to-purple-500 
-                    text-white 
-                    w-9 h-9 sm:w-12 sm:h-12 p-0 
-                    shadow-lg shadow-blue-500/20 hover:shadow-purple-500/30
-                    transition-all duration-300 hover:scale-105 
-                    disabled:opacity-50 disabled:hover:scale-100
-                    disabled:shadow-none disabled:bg-gray-400 
-                    group z-20"
+                  className="absolute right-1.5 sm:right-3 
+                    bottom-[6px] sm:bottom-[10px] 
+                    rounded-lg sm:rounded-[20px]
+                    w-8 h-8 sm:w-12 sm:h-12 p-0"
                 >
                   {isLoading ? (
                     <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />

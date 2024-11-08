@@ -37,7 +37,7 @@ const Login = () => {
             className="w-10 h-10 rounded-xl shadow-sm"
           />
           <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Bohurupi AI : Your Personalized AI Assistant
+            Bohurupi AI : Your AI Assistant
           </span>
         </div>
       </header>
