@@ -191,15 +191,14 @@ const MODELS: ModelOption[] = [
 // Define props interface
 interface ModelSelectorProps {
   onModelChange?: (model: string) => void;
+  compact?: boolean;
 }
 
-const ModelSelector: React.FC<ModelSelectorProps> = ({ onModelChange }) => {
+const ModelSelector: React.FC<ModelSelectorProps> = ({ onModelChange, compact }) => {
   const navigate = useNavigate()
   const { toast } = useToast()
   const [selectedProvider, setSelectedProvider] = useState('OpenAI');
   const [selectedModel, setSelectedModel] = useState('gpt35');
-  const [userEmail, setUserEmail] = useState<string | null>(null)
-  const [userProfile, setUserProfile] = useState<{ display_name: string | null }>({ display_name: null })
 
   const handleProviderChange = (provider: string) => {
     setSelectedProvider(provider);
@@ -220,49 +219,6 @@ const ModelSelector: React.FC<ModelSelectorProps> = ({ onModelChange }) => {
   const providerModels = MODELS.filter(m => m.provider === selectedProvider);
   const ProviderIcon = providerIcons[selectedProvider as keyof typeof providerIcons];
 
-  useEffect(() => {
-    const getUserEmail = async () => {
-      const { data: { session } } = await supabase.auth.getSession()
-      setUserEmail(session?.user?.email || null)
-    }
-    getUserEmail()
-  }, [])
-
-  useEffect(() => {
-    const getProfile = async () => {
-      try {
-        const { data: { session } } = await supabase.auth.getSession()
-        if (session?.user) {
-          const { data: profile } = await supabase
-            .from('user_profiles')
-            .select('display_name')
-            .eq('user_id', session.user.id)
-            .maybeSingle()
-          
-          if (profile) {
-            setUserProfile(profile)
-          }
-        }
-      } catch (error) {
-        console.error('Error loading profile:', error)
-        setUserProfile({ display_name: null })
-      }
-    }
-
-    getProfile()
-    window.addEventListener('profile-updated', getProfile)
-    return () => window.removeEventListener('profile-updated', getProfile)
-  }, [])
-
-  const handleSignOut = async () => {
-    await supabase.auth.signOut()
-    toast({
-      title: "Signed out",
-      description: "Successfully signed out of your account",
-    })
-    navigate("/login")
-  }
-
   return (
     <div className="flex flex-row gap-1 sm:gap-3 w-full items-center px-0.5 sm:px-0">
       {/* Provider and Model Selectors */}
@@ -270,7 +226,11 @@ const ModelSelector: React.FC<ModelSelectorProps> = ({ onModelChange }) => {
         {/* Provider Selector */}
         <Select value={selectedProvider} onValueChange={handleProviderChange}>
           <SelectTrigger 
-            className="w-[110px] sm:w-[140px] lg:w-[180px] bg-white/80 backdrop-blur-xl 
+            className={`${
+              compact 
+                ? 'w-[90px] sm:w-[110px]' 
+                : 'w-[110px] sm:w-[140px] lg:w-[180px]'
+            } bg-white/80 backdrop-blur-xl 
               border-gray-200/50 
               transition-all duration-300 hover:border-blue-300 
               rounded-lg sm:rounded-xl lg:rounded-2xl
@@ -278,7 +238,7 @@ const ModelSelector: React.FC<ModelSelectorProps> = ({ onModelChange }) => {
               hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)]
               px-2 sm:px-2.5 lg:px-4 
               h-8 sm:h-9 lg:h-11 
-              text-[11px] sm:text-xs lg:text-sm"
+              text-[11px] sm:text-xs lg:text-sm`}
           >
             <SelectValue placeholder="Provider" />
           </SelectTrigger>
@@ -382,64 +342,6 @@ const ModelSelector: React.FC<ModelSelectorProps> = ({ onModelChange }) => {
             </SelectGroup>
           </SelectContent>
         </Select>
-      </div>
-
-      {/* Profile Dropdown */}
-      <div className="ml-auto pl-1 sm:pl-2 lg:pl-5">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button 
-              variant="ghost" 
-              className="h-8 sm:h-9 lg:h-11 
-                px-1.5 sm:px-2 
-                hover:bg-gray-100/40 
-                rounded-lg sm:rounded-xl 
-                transition-all duration-200"
-            >
-              <Avatar className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8">
-                <AvatarImage src="/src/assets/pritam-img.png" />
-                <AvatarFallback>
-                  <UserRound className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />
-                </AvatarFallback>
-              </Avatar>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent 
-            align="end" 
-            className="w-48 sm:w-56 rounded-xl bg-white/80 backdrop-blur-xl"
-          >
-            <DropdownMenuLabel>
-              <span className="block text-xs sm:text-sm font-medium">
-                {userProfile.display_name || 'Set display name'}
-              </span>
-              <span className="block text-[10px] sm:text-xs text-gray-500">
-                {userEmail}
-              </span>
-            </DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem 
-              onClick={() => navigate('/profile')} 
-              className="text-xs sm:text-sm rounded-lg"
-            >
-              <UserRound className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
-              <span>Edit Profile</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem 
-              onClick={() => navigate('/settings')} 
-              className="text-xs sm:text-sm rounded-lg"
-            >
-              <Settings className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
-              <span>Settings</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem 
-              onClick={handleSignOut} 
-              className="text-xs sm:text-sm rounded-lg"
-            >
-              <LogOut className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
-              <span>Sign out</span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
       </div>
     </div>
   );
