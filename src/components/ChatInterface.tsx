@@ -350,7 +350,7 @@ export default function ChatInterface({ generateContent, defaultMessage, session
         >
           <div className="flex items-center space-x-2 sm:space-x-4">
             <Avatar className="w-8 h-8 sm:w-10 sm:h-10">
-              <AvatarImage src="/src/assets/ai-icon.png" alt="AI Avatar" />
+              <AvatarImage src="/public/assets/ai-icon.png" alt="AI Avatar" />
             </Avatar>
             <span className="font-medium text-sm sm:text-base hidden sm:inline">Bohurupi AI : Your Personalized AI Assistant</span>
             <span className="font-medium text-sm sm:hidden">Bohurupi AI</span>
@@ -465,7 +465,7 @@ export default function ChatInterface({ generateContent, defaultMessage, session
                     <div className={`flex items-start space-x-2 sm:space-x-3 max-w-[85%] sm:max-w-[80%] ${message.role === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
                       <Avatar className="w-6 h-6 sm:w-8 sm:h-8 mt-1">
                         <AvatarImage 
-                          src={message.role === 'user' ? "/src/assets/pritam-img.png" : "/src/assets/ai-icon.png"} 
+                          src={message.role === 'user' ? "/public/assets/pritam-img.png" : "/public/assets/ai-icon.png"} 
                           alt={message.role === 'user' ? "User" : "AI"} 
                         />
                       </Avatar>

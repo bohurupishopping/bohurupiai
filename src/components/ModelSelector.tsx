@@ -378,7 +378,7 @@ const ModelSelector: React.FC<ModelSelectorProps> = ({ onModelChange }) => {
               className="h-9 sm:h-11 px-2 hover:bg-gray-100/40 rounded-xl transition-all duration-200"
             >
               <Avatar className="h-7 w-7 sm:h-8 sm:w-8">
-                <AvatarImage src="/src/assets/pritam-img.png" />
+                <AvatarImage src="/public/assets/pritam-img.png" />
                 <AvatarFallback>
                   <UserRound className="h-4 w-4 text-gray-400" />
                 </AvatarFallback>
