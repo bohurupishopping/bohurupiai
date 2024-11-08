@@ -1,71 +1,37 @@
-# Welcome to your GPT Engineer project
-
-## Project info
-
-**URL**: https://run.gptengineer.app/projects/4c7fba2c-cfbf-47c1-ae1d-c61b517cbb24/improve
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use GPT Engineer**
-
-Simply visit the GPT Engineer project at [GPT Engineer](https://gptengineer.app/projects/4c7fba2c-cfbf-47c1-ae1d-c61b517cbb24/improve) and start prompting.
-
-Changes made via gptengineer.app will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in the GPT Engineer UI.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-All GPT Engineer projects can be deployed directly via the GPT Engineer app.
-
-Simply visit your project at [GPT Engineer](https://gptengineer.app/projects/4c7fba2c-cfbf-47c1-ae1d-c61b517cbb24/improve) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.gptengineer.app/tips-tricks/custom-domain/)
+<strong class="font-bold text-gray-900">Bohurupi AI: Multi LLM Chat</strong>
+=====================================
+<strong class="font-bold text-gray-900">Introduction</strong>
+---------------
+<p class="mb-2 leading-relaxed text-gray-700">Bohurupi AI is a cutting-edge Multi LLM Chat platform that enables users to engage in continuous conversations with a wide range of paid and free models. Our platform is designed to provide a seamless and interactive experience, allowing users to switch models mid-chat, access chat history, and even co-create stories with AI.</p>
+<strong class="font-bold text-gray-900">Features</strong>
+------------
+<p class="mb-2 leading-relaxed text-gray-700">* <strong class="font-bold text-gray-900">Model Selection</strong>: Choose from a vast array of paid and free models to suit your conversational needs.
+* <strong class="font-bold text-gray-900">Continuous Chat</strong>: Engage in uninterrupted conversations with our AI models, which remember everything discussed.
+* <strong class="font-bold text-gray-900">Model Switching</strong>: Seamlessly switch between models mid-chat to explore different perspectives and topics.
+* <strong class="font-bold text-gray-900">Chat History</strong>: Access a record of your conversations, allowing you to review and reflect on your interactions.
+* <strong class="font-bold text-gray-900">Interactive Storytelling</strong>: Co-create stories with our AI models, which remember and evolve the narrative.
+* <strong class="font-bold text-gray-900">Future Features</strong>: Stay tuned for upcoming features, including Image and Audio generation.</p>
+<strong class="font-bold text-gray-900">Upcoming Features</strong>
+--------------------
+<p class="mb-2 leading-relaxed text-gray-700">* <strong class="font-bold text-gray-900">Image Generation</strong>: Create visual content with our AI models, opening up new possibilities for artistic expression.
+* <strong class="font-bold text-gray-900">Audio Generation</strong>: Produce audio content with our AI models, enabling new forms of creative expression.</p>
+<strong class="font-bold text-gray-900">Technical Details</strong>
+--------------------
+<p class="mb-2 leading-relaxed text-gray-700">* <strong class="font-bold text-gray-900">Frontend</strong>: Built with [Lovable](https://lovable.io/)
+* <strong class="font-bold text-gray-900">Advanced Tech</strong>: Powered by [Cursor](https://cursor.so/)
+* <strong class="font-bold text-gray-900">Database</strong>: Stored securely with [Supabase](https://supabase.io/)</p>
+<strong class="font-bold text-gray-900">Community Engagement</strong>
+------------------------
+<p class="mb-2 leading-relaxed text-gray-700">We value your feedback and suggestions! Please share your ideas for new features, favorite free models, and any other thoughts on how to improve Bohurupi AI.</p>
+<strong class="font-bold text-gray-900">Getting Started</strong>
+-------------------
+<p class="mb-2 leading-relaxed text-gray-700">To get started with Bohurupi AI, simply visit our platform and begin exploring the various models and features available.</p>
+<strong class="font-bold text-gray-900">Contributing</strong>
+---------------
+<p class="mb-2 leading-relaxed text-gray-700">We welcome contributions from the community! If you're interested in contributing to Bohurupi AI, please review our [CONTRIBUTING.md](CONTRIBUTING.md) file for more information.</p>
+<strong class="font-bold text-gray-900">License</strong>
+----------
+<p class="mb-2 leading-relaxed text-gray-700">Bohurupi AI is licensed under the [MIT License](LICENSE.md).</p>
+<strong class="font-bold text-gray-900">Acknowledgments</strong>
+------------------
+<p class="mb-2 leading-relaxed text-gray-700">We would like to thank the developers of [Lovable](https://lovable.io/), [Cursor](https://cursor.so/), and [Supabase](https://supabase.io/) for their contributions to the development of Bohurupi AI.</p>
