@@ -222,59 +222,78 @@ const Sidebar = () => {
         <span className="text-xs font-medium text-gray-500">Recent Chats</span>
       </div>
       <AnimatePresence>
-        {chatSessions.map((session) => (
-          <motion.div
-            key={session.session_id}
-            initial={{ opacity: 0, y: 5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -5 }}
-            className="mb-2"
-          >
-            <div className={`group relative p-2 rounded-xl hover:bg-gray-100/40 
-              transition-all duration-200 cursor-pointer ${
-              !isCollapsed ? 'space-y-1' : ''
-            }`}>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <MessageSquare className="h-4 w-4 text-gray-400" />
+        {chatSessions.map((session, index) => {
+          // Generate a different color for each chat
+          const colors = [
+            'text-blue-400',
+            'text-purple-400',
+            'text-pink-400',
+            'text-indigo-400',
+            'text-teal-400',
+            'text-cyan-400',
+            'text-green-400'
+          ];
+          const colorClass = colors[index % colors.length];
+
+          return (
+            <motion.div
+              key={session.session_id}
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              className="mb-1.5"
+            >
+              <div className={`group relative p-2 rounded-xl 
+                hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100/50
+                transition-all duration-300 cursor-pointer
+                hover:shadow-sm`}
+              >
+                <div className="flex items-center justify-between">
+                  <div 
+                    className="flex items-center space-x-2 flex-1"
+                    onClick={() => handleViewSession(session.session_id)}
+                  >
+                    <MessageSquare className={`h-4 w-4 ${colorClass} transition-transform duration-300 group-hover:scale-110`} />
+                    {!isCollapsed && (
+                      <span className="text-sm font-medium text-gray-700 truncate max-w-[120px] group-hover:text-gray-900">
+                        {session.last_message}
+                      </span>
+                    )}
+                  </div>
                   {!isCollapsed && (
-                    <span className="text-xs font-medium text-gray-600 truncate max-w-[120px]">
-                      {session.last_message}
-                    </span>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button 
+                          variant="ghost" 
+                          size="icon" 
+                          className="h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                        >
+                          <MoreHorizontal className="h-4 w-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end" className="w-40">
+                        <DropdownMenuItem 
+                          onClick={() => handleViewSession(session.session_id)}
+                          className="text-gray-600 hover:text-gray-900"
+                        >
+                          <Eye className="mr-2 h-4 w-4" />
+                          View Chat
+                        </DropdownMenuItem>
+                        <DropdownMenuItem 
+                          onClick={() => handleDeleteSession(session.session_id)}
+                          className="text-red-600 hover:text-red-700"
+                        >
+                          <Trash2 className="mr-2 h-4 w-4" />
+                          Delete
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   )}
                 </div>
-                {!isCollapsed && (
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="icon" className="h-6 w-6">
-                        <MoreHorizontal className="h-4 w-4" />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end" className="w-40">
-                      <DropdownMenuItem onClick={() => handleViewSession(session.session_id)}>
-                        <Eye className="mr-2 h-4 w-4" />
-                        View Chat
-                      </DropdownMenuItem>
-                      <DropdownMenuItem 
-                        onClick={() => handleDeleteSession(session.session_id)}
-                        className="text-red-600"
-                      >
-                        <Trash2 className="mr-2 h-4 w-4" />
-                        Delete
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                )}
               </div>
-              {!isCollapsed && (
-                <div className="flex items-center justify-between text-xs text-gray-400">
-                  <span>{session.message_count} messages</span>
-                  <span>{formatDistanceToNow(new Date(session.timestamp))} ago</span>
-                </div>
-              )}
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          );
+        })}
       </AnimatePresence>
     </div>
   );
@@ -297,7 +316,7 @@ const Sidebar = () => {
       <div className="flex items-center p-3 border-b border-gray-200/30">
         <div className="flex items-center gap-2">
           <img 
-            src="/assets/ai-icon.png" 
+            src="/src/assets/ai-icon.png" 
             alt="AI Icon" 
             className="w-8 h-8 rounded-xl shadow-sm"
           />

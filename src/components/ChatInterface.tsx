@@ -313,7 +313,9 @@ export default function ChatInterface({ generateContent, defaultMessage, session
   }
 
   return (
-    <div className="h-[90dvh] flex flex-col overflow-hidden px-3 sm:px-0 py-0 sm:p-1 w-full">
+    <div className="h-[90dvh] flex flex-col overflow-hidden 
+      px-3 sm:px-4 md:px-6 lg:px-8 py-0 sm:p-1 
+      w-full max-w-[1600px] mx-auto">
       <StoryCreationPopup
         isOpen={isStoryPopupOpen}
         onClose={() => setIsStoryPopupOpen(false)}
@@ -329,6 +331,8 @@ export default function ChatInterface({ generateContent, defaultMessage, session
           flex flex-col
           overflow-hidden
           w-full
+          max-w-[1400px]
+          mx-auto
           h-[calc(100dvh-20px)] sm:h-[calc(98dvh-16px)]"
         style={{ 
           background: 'linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%)'
