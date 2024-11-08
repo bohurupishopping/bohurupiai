@@ -133,7 +133,7 @@ const Header: React.FC<HeaderProps> = ({
                   hover:ring-purple-200
                   rounded-xl"
                 >
-                  <AvatarImage src="/src/assets/pritam-img.png" />
+                  <AvatarImage src="/assets/pritam-img.png" />
                   <AvatarFallback className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl">
                     <UserRound className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-gray-600" />
                   </AvatarFallback>

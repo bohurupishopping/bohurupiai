@@ -316,7 +316,7 @@ const Sidebar = () => {
       <div className="flex items-center p-3 border-b border-gray-200/30">
         <div className="flex items-center gap-2">
           <img 
-            src="/src/assets/ai-icon.png" 
+            src="/assets/ai-icon.png" 
             alt="AI Icon" 
             className="w-8 h-8 rounded-xl shadow-sm"
           />
