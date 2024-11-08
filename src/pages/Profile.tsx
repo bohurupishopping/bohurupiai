@@ -216,7 +216,7 @@ const Profile = () => {
             <CardHeader className="bg-gradient-to-br from-blue-50 to-purple-50 border-b border-gray-200/30">
               <div className="flex items-center gap-4">
                 <Avatar className="h-16 w-16 border-2 border-white shadow-lg">
-                  <AvatarImage src="/src/assets/pritam-img.png" />
+                  <AvatarImage src="/assets/pritam-img.png" />
                   <AvatarFallback>
                     <UserRound className="h-8 w-8 text-gray-400" />
                   </AvatarFallback>

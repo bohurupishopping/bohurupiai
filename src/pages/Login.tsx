@@ -32,7 +32,7 @@ const Login = () => {
       <header className="w-full py-4 px-4 sm:px-6 flex justify-center items-center border-b border-gray-200/30 backdrop-blur-sm bg-white/50">
         <div className="flex items-center gap-3">
           <img 
-            src="/public/assets/ai-icon.png" 
+            src="/assets/ai-icon.png" 
             alt="Bohurupi AI" 
             className="w-10 h-10 rounded-xl shadow-sm"
           />
